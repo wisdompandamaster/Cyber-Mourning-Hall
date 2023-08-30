@@ -9,3 +9,26 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model MouringTool {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  mouringTool String
+  isDeleted   Boolean @default(false)
+}
+
+model MouringWord {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  visitorId String   @db.ObjectId
+  content   String
+  createdAt DateTime @default(now())
+  isDeleted Boolean  @default(false)
+
+  visitor Visitor @relation(fields: [visitorId], references: [id], onDelete: Cascade)
+}
+
+model Visitor {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt   DateTime      @default(now())
+  browser     String
+  MouringWord MouringWord[]
+}
