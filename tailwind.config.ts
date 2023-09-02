@@ -7,7 +7,18 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        knock: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.1)" },
+        },
+        add: {
+          "0%": { opacity: "1" },
+          "100% ": { transform: "translate(-50%, -20px)", opacity: "0" },
+        },
+      },
+    },
   },
   plugins: [],
 };
