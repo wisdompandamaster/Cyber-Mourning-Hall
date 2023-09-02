@@ -17,13 +17,23 @@ function WoodenFish() {
     if (audio) {
       audio.play();
     }
-    // const tag = document.getElementById("tag")!;
-    // tag.classList.add("animate-[add_1s_ease-out]");
+    var tag = document.createElement("div"); //创建一个div标签
+    tag.textContent = "功德 + 1";
+    tag.className =
+      "absolute top-5 text-white left-16 opacity-0 animate-[add_1s_ease-out]";
+    document.getElementById("woodenfish")?.appendChild(tag); //为父元素添加一个div标签
+
+    // 到时候就清除
+    setTimeout(() => {
+      document.getElementById("woodenfish")?.removeChild(tag);
+    }, 800);
+
     setCount((count) => count + 1);
   };
 
   return (
     <div
+      id="woodenfish"
       className="group w-40 h-40 relative font-['KaiTi'] font-semibold"
       onClick={addCount}
     >
@@ -32,9 +42,6 @@ function WoodenFish() {
         src={woodenfish}
         alt={"woodenfish"}
       />
-      <div className="absolute top-5 text-white left-16 opacity-0 group-active:animate-[add_1s_ease-out]">
-        功德 + 1
-      </div>
       <div className="text-sm text-gray-100 text-center">
         {"今日功德 " + count}
       </div>
