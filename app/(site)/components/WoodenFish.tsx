@@ -34,7 +34,8 @@ function WoodenFish() {
   return (
     <div
       id="woodenfish"
-      className="group w-40 h-40 relative font-['KaiTi'] font-semibold"
+      className="group w-40 h-40 relative font-['KaiTi'] font-semibold backdrop-blur-lg
+      backdrop-brightness-50 rounded-lg p-2 mt-5 select-none"
       onClick={addCount}
     >
       <Image
