@@ -4,6 +4,7 @@ import WoodenFish from "./components/WoodenFish";
 import BottomBar from "./components/BottomBar";
 import Confetti from "./components/Confetti";
 import InputWord from "./components/InputWord";
+import Barrage from "./components/Barrage";
 
 export default function Home() {
   return (
@@ -58,6 +59,7 @@ export default function Home() {
       <BottomBar />
       <InputWord />
       <Confetti />
+      <Barrage />
     </div>
   );
 }
