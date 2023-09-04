@@ -56,7 +56,7 @@ export default function Home() {
       <Altar />
       <WoodenFish />
       <BottomBar />
-      <InputWord placeholder="type in some words to mourn" />
+      <InputWord />
       <Confetti />
     </div>
   );
