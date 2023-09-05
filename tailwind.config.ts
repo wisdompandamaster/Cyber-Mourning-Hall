@@ -17,6 +17,10 @@ const config: Config = {
           "0%": { opacity: "1" },
           "100% ": { transform: "translate(-50%, -20px)", opacity: "0" },
         },
+        flow: {
+          "0%": { right: "0%", transform: "translateX(100%)" },
+          "100%": { right: "100%", transform: "translateX(-100%)" },
+        },
       },
     },
   },
