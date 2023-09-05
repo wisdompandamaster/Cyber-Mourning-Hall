@@ -10,16 +10,24 @@ const Barrage = () => {
     { id: "124", content: "world" },
     { id: "125", content: "wisdom" },
     { id: "126", content: "panda" },
+    { id: "127", content: "hello" },
+    { id: "128", content: "world" },
+    { id: "129", content: "wisdompandamaster" },
+    { id: "130", content: "panda" },
+    { id: "131", content: "hello" },
+    { id: "132", content: "world" },
+    { id: "133", content: "wisdom" },
+    { id: "134", content: "panda" },
   ];
 
   const [barrages, setBarrages] = useState(init);
 
-  // 随机出现在哪一行 1% 到 100% 5%一级
+  // 随机出现在哪一行 0% 到 90%  6% 为一级,一共 15 行
   const randomTop = () => {
-    const min = 1;
-    const max = 19;
+    const min = 0;
+    const max = 15;
     const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
-    return randomNumber * 5 + "%";
+    return randomNumber * 6 + "%";
   };
   // 随机持续时间
   const randomDuration = () => {
