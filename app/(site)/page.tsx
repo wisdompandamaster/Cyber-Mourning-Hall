@@ -4,7 +4,7 @@ import WoodenFish from "./components/WoodenFish";
 import BottomBar from "./components/BottomBar";
 import Confetti from "./components/Confetti";
 import InputWord from "./components/InputWord";
-import Barrage from "./components/Barrage";
+import Barrage from "./components/BulletScreen";
 
 export default function Home() {
   return (
