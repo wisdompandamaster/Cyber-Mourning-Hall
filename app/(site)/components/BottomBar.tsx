@@ -1,25 +1,39 @@
 "use client";
 
 import React, { useState } from "react";
+import { MdOutlineComment, MdOutlineCommentsDisabled } from "react-icons/md";
 
 const BottomBar = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const handleMouseMove = (e: any) => {
-    const y = e.clientY;
-    const windowHeight = window.innerHeight;
-    const threshold = 200;
-    setIsVisible(y > windowHeight - threshold);
-  };
+  const [showWall, setShowWall] = useState(true);
 
   return (
-    <div
-      className={`fixed bottom-0 left-0 right-0 p-4 bg-gray-800 text-white transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "translate-y-full"
-      }`}
-      onMouseMove={handleMouseMove}
-    >
-      <p>This is a bottom bar.</p>
+    <div>
+      {/* <div
+        className="
+        fixed
+        bottom-8
+        right-28
+        w-14
+        h-14
+        rounded-lg
+        bg-white
+        bg-opacity-60
+        p-3
+        flex
+        items-center
+        select-none
+        hover:bg-opacity-80
+        duration-300
+      "
+      >
+        <div onClick={() => setShowWall(!showWall)}>
+          {showWall ? (
+            <MdOutlineCommentsDisabled size={30} />
+          ) : (
+            <MdOutlineComment size={30} />
+          )}
+        </div>
+      </div> */}
     </div>
   );
 };

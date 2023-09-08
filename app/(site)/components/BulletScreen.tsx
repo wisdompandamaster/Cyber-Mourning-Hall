@@ -37,59 +37,43 @@ const Barrage = () => {
     return Math.floor(Math.random() * 6 + 20) + "s";
   };
 
-  // 单条弹幕
-  const barrage = (barrage: { id: string; content: string }) => {
-    return (
-      <div
-        key={barrage.id}
-        className={clsx(`
-        absolute
-        text-xl
-        text-white
-        font-semibold
-        right-0
-        translate-x-[100%]
-        animate-[flow_20s_linear_infinite]
-      `)}
-        style={{ top: randomTop() }}
-      >
-        {barrage.content}
-      </div>
-    );
-  };
-
   useEffect(() => {
     const wall = document.getElementById("wall");
-    // 每两秒取一个弹幕显示
-    // TODO: find a way to clearinterval
-    let timer = setInterval(() => {
-      var randomIndex = Math.floor(Math.random() * barrages.length);
-      let barrageContent = barrages[randomIndex];
-      const bullet = document.createElement("div");
-      bullet.classList.add(
-        "absolute",
-        "text-xl",
-        "text-white",
-        "font-semibold",
-        "right-0",
-        "translate-x-[100%]",
-        `animate-[flow_20s_linear]`
-      );
-      bullet.style.top = randomTop();
-      bullet.style.animationDuration = randomDuration();
-      bullet.textContent = barrageContent.content;
-      // 动画结束后去除元素
-      bullet.addEventListener("animationend", (e) => {
-        wall?.removeChild(bullet);
-        bullet.remove();
-      });
-      wall?.appendChild(bullet);
-    }, 1000);
+    // 每 1 秒取一个弹幕显示
+    let timer: string | number | NodeJS.Timeout | undefined;
+    // 如果要显示弹幕就启动 interval 计时器
+    if (showWall) {
+      timer = setInterval(() => {
+        var randomIndex = Math.floor(Math.random() * barrages.length);
+        let barrageContent = barrages[randomIndex];
+        const bullet = document.createElement("div");
+        bullet.classList.add(
+          "absolute",
+          "text-xl",
+          "text-white",
+          "font-semibold",
+          "right-0",
+          "translate-x-[100%]",
+          `animate-[flow_20s_linear]`
+        );
+        bullet.style.top = randomTop();
+        bullet.style.animationDuration = randomDuration();
+        bullet.textContent = barrageContent.content;
+        // 动画结束后去除元素
+        bullet.addEventListener("animationend", (e) => {
+          wall?.removeChild(bullet);
+          bullet.remove();
+        });
+        wall?.appendChild(bullet);
+      }, 1000);
+    }
 
     return () => {
-      clearInterval(timer);
-      console.log("unmount barrage");
-      console.log("clearInterval");
+      if (timer) {
+        clearInterval(timer);
+      }
+      const divElement = document.getElementById("wall") as HTMLElement;
+      divElement.innerHTML = "";
     };
   }, [barrages, showWall]);
 
@@ -102,12 +86,12 @@ const Barrage = () => {
              w-full 
              h-2/5 
            bg-black 
-             bg-opacity-40 
+             bg-opacity-0 
              absolute 
              overflow-x-hidden 
              z-50
             `,
-          showWall && "hidden"
+          !showWall && "hidden"
         )}
       ></div>
       <div
@@ -129,7 +113,7 @@ const Barrage = () => {
       "
       >
         <div onClick={() => setShowWall(!showWall)}>
-          {showWall ? (
+          {!showWall ? (
             <MdOutlineCommentsDisabled size={30} />
           ) : (
             <MdOutlineComment size={30} />
