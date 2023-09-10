@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 interface InputsProps {
@@ -13,7 +14,13 @@ const InputWord = () => {
     formState: { errors },
   } = useForm<InputsProps>();
 
-  const onSubmit: SubmitHandler<InputsProps> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<InputsProps> = (data) => {
+    axios
+      .post("/api/word", {
+        ...data,
+      })
+      .then((res) => console.log(res.data));
+  };
 
   // console.log(watch("example")); // watch input value by passing the name of it
 

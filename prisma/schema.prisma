@@ -18,12 +18,12 @@ model MouringTool {
 
 model MouringWord {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  visitorId String   @db.ObjectId
+  visitorId String?  @db.ObjectId
   content   String
   createdAt DateTime @default(now())
   isDeleted Boolean  @default(false)
 
-  visitor Visitor @relation(fields: [visitorId], references: [id], onDelete: Cascade)
+  visitor Visitor? @relation(fields: [visitorId], references: [id], onDelete: Cascade)
 }
 
 model Visitor {
