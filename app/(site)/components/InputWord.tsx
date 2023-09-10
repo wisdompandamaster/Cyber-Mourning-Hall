@@ -7,6 +7,19 @@ interface InputsProps {
   inputWord: string;
 }
 
+// 防抖函数
+let timerId: string | number | NodeJS.Timeout | undefined;
+function debounce(func: Function, delay: number): Function {
+  return (...args: any[]) => {
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+    timerId = setTimeout(() => {
+      func.apply(args);
+    }, delay);
+  };
+}
+
 const InputWord = () => {
   const {
     register,
@@ -15,11 +28,14 @@ const InputWord = () => {
   } = useForm<InputsProps>();
 
   const onSubmit: SubmitHandler<InputsProps> = (data) => {
-    axios
-      .post("/api/word", {
-        ...data,
-      })
-      .then((res) => console.log(res.data));
+    const submit = () =>
+      axios
+        .post("/api/word", {
+          ...data,
+        })
+        .then((res) => console.log(res.data));
+
+    debounce(submit, 2000)();
   };
 
   // console.log(watch("example")); // watch input value by passing the name of it
