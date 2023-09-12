@@ -5,8 +5,14 @@ import { randomBytes } from "crypto";
 import { useState, useEffect, TimeHTMLAttributes } from "react";
 import Bullet from "./Bullet";
 import { MdOutlineCommentsDisabled, MdOutlineComment } from "react-icons/md";
+import InputWord from "./InputWord";
+import { MouringWord } from "@prisma/client";
 
-const Barrage = () => {
+interface BarrageProps {
+  mourningWords: MouringWord[];
+}
+
+const Barrage: React.FC<BarrageProps> = ({ mourningWords }) => {
   let init = [
     { id: "123", content: "hello" },
     { id: "124", content: "world" },
@@ -22,7 +28,7 @@ const Barrage = () => {
     { id: "134", content: "panda" },
   ];
 
-  const [barrages, setBarrages] = useState(init);
+  const [barrages, setBarrages] = useState(mourningWords);
   const [showWall, setShowWall] = useState(true);
 
   // 随机出现在哪一行 0% 到 90%  6% 为一级,一共 15 行
@@ -120,6 +126,7 @@ const Barrage = () => {
           )}
         </div>
       </div>
+      <InputWord setBarrages={setBarrages} />
     </>
   );
 };

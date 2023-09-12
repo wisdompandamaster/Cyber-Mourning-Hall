@@ -7,6 +7,10 @@ interface InputsProps {
   inputWord: string;
 }
 
+interface InputWordProps {
+  setBarrages: Function;
+}
+
 // 防抖函数
 let timerId: string | number | NodeJS.Timeout | undefined;
 function debounce(func: Function, delay: number): Function {
@@ -20,7 +24,7 @@ function debounce(func: Function, delay: number): Function {
   };
 }
 
-const InputWord = () => {
+const InputWord: React.FC<InputWordProps> = ({ setBarrages }) => {
   const {
     register,
     handleSubmit,

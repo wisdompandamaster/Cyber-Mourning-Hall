@@ -4,9 +4,12 @@ import WoodenFish from "./components/WoodenFish";
 import BottomBar from "./components/BottomBar";
 import Confetti from "./components/Confetti";
 import InputWord from "./components/InputWord";
-import Barrage from "./components/BulletScreen";
+import BulletScreen from "./components/BulletScreen";
+import getMouringWords from "../actions/getMourningWords";
 
-export default function Home() {
+export default async function Home() {
+  const mourningWords = await getMouringWords();
+
   return (
     <div className="flex flex-col items-center">
       <div
@@ -53,13 +56,11 @@ export default function Home() {
           摆烂为智得脱世间苦
         </p>
       </div>
-
       <Altar />
       <WoodenFish />
       <BottomBar />
-      <InputWord />
       <Confetti />
-      <Barrage />
+      <BulletScreen mourningWords={mourningWords} />
     </div>
   );
 }
