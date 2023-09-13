@@ -1,3 +1,11 @@
+/*
+ * @Author: wisdompandamaster 2532569059@qq.com
+ * @Date: 2023-09-12 08:30:18
+ * @LastEditors: wisdompandamaster 2532569059@qq.com
+ * @LastEditTime: 2023-09-13 08:09:18
+ * @FilePath: \WEBd:\Code\Cyber-Mourning-Hall\cyber-mourning-hall\app\(site)\components\InputWord.tsx
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 "use client";
 
 import axios from "axios";
@@ -37,7 +45,11 @@ const InputWord: React.FC<InputWordProps> = ({ setBarrages }) => {
         .post("/api/word", {
           ...data,
         })
-        .then((res) => console.log(res.data));
+        .then((res) => {
+          console.log(res.data);
+          //TODO: 重新设置了弹幕，但是不让弹幕重启
+          setBarrages(res.data);
+        });
 
     debounce(submit, 2000)();
   };
