@@ -10,3 +10,19 @@ body,
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+#banner {
+  background-image: url(../public/image/banner.png);
+  background-size: cover;
+  background-position: 85% 0%;
+}
+
+#left {
+  background-image: url(../public/image/left.png);
+  background-size: cover;
+}
+
+#right {
+  background-image: url(../public/image/right.png);
+  background-size: cover;
+}

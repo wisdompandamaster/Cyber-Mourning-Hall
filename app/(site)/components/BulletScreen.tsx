@@ -13,21 +13,6 @@ interface BarrageProps {
 }
 
 const Barrage: React.FC<BarrageProps> = ({ mourningWords }) => {
-  let init = [
-    { id: "123", content: "hello" },
-    { id: "124", content: "world" },
-    { id: "125", content: "wisdom" },
-    { id: "126", content: "panda" },
-    { id: "127", content: "hello" },
-    { id: "128", content: "world" },
-    { id: "129", content: "wisdompandamaster" },
-    { id: "130", content: "panda" },
-    { id: "131", content: "hello" },
-    { id: "132", content: "world" },
-    { id: "133", content: "wisdom" },
-    { id: "134", content: "panda" },
-  ];
-
   const [barrages, setBarrages] = useState(mourningWords);
   const [showWall, setShowWall] = useState(true);
 
@@ -79,7 +64,10 @@ const Barrage: React.FC<BarrageProps> = ({ mourningWords }) => {
         clearInterval(timer);
       }
       const divElement = document.getElementById("wall") as HTMLElement;
-      divElement.innerHTML = "";
+      if (!showWall) {
+        console.log("clear");
+        divElement.innerHTML = "";
+      }
     };
   }, [barrages, showWall]);
 

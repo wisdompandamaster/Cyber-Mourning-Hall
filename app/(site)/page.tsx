@@ -1,3 +1,11 @@
+/*
+ * @Author: wisdompandamaster 2532569059@qq.com
+ * @Date: 2023-09-12 08:30:18
+ * @LastEditors: wisdompandamaster 2532569059@qq.com
+ * @LastEditTime: 2023-09-20 19:14:50
+ * @FilePath: \WEBd:\Code\Cyber-Mourning-Hall\cyber-mourning-hall\app\(site)\page.tsx
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import Image from "next/image";
 import Altar from "./components/Altar";
 import WoodenFish from "./components/WoodenFish";
@@ -13,6 +21,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col items-center">
       <div
+        id="banner"
         className="
         text-gray-800
         text-center 
@@ -44,12 +53,14 @@ export default async function Home() {
       "
       >
         <p
+          id="right"
           className="absolute left-1/2 top-48 translate-x-52  bg-white
          bg-opacity-50  rounded-lg px-2 py-6 leading-10 w-20 tracking-widest"
         >
           微胖是福能纳百千事
         </p>
         <p
+          id="left"
           className="absolute left-1/2 top-48 -translate-x-72  bg-white
          bg-opacity-50  rounded-lg px-2 py-6 leading-10 w-20 tracking-widest"
         >
