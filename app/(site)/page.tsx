@@ -1,11 +1,3 @@
-/*
- * @Author: wisdompandamaster 2532569059@qq.com
- * @Date: 2023-09-12 08:30:18
- * @LastEditors: wisdompandamaster 2532569059@qq.com
- * @LastEditTime: 2023-09-20 19:14:50
- * @FilePath: \WEBd:\Code\Cyber-Mourning-Hall\cyber-mourning-hall\app\(site)\page.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
 import Image from "next/image";
 import Altar from "./components/Altar";
 import WoodenFish from "./components/WoodenFish";
@@ -14,6 +6,7 @@ import Confetti from "./components/Confetti";
 import InputWord from "./components/InputWord";
 import BulletScreen from "./components/BulletScreen";
 import getMouringWords from "../actions/getMourningWords";
+import BackAudio from "./components/BackAudio";
 
 export default async function Home() {
   const mourningWords = await getMouringWords();
@@ -72,6 +65,7 @@ export default async function Home() {
       <BottomBar />
       <Confetti />
       <BulletScreen mourningWords={mourningWords} />
+      <BackAudio />
     </div>
   );
 }
